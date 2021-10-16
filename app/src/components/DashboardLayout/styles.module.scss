@@ -77,23 +77,26 @@ $gapMD: 16px;
   .chartWrapper {
     width: 168px;
     height: 168px;
+    position: relative;
     @media (max-width: $screen-xs) {
       width: 110px;
       height: 110px;
     }
     .insideChart {
+      position: absolute;
+      top: 0;
+      left: 0;
       width: 100%;
       height: 100%;
       display: flex;
       flex-direction: column;
       align-items: center;
       justify-content: center;
-      border: 1px solid red;
       .text {
         font-size: 10px;
         margin-bottom: 6px;
         @media (max-width: $screen-xs) {
-          font-size: 9px;
+          font-size: 7px;
         }
       }
       .number {
@@ -101,14 +104,14 @@ $gapMD: 16px;
         font-weight: 700;
         margin-bottom: 6px;
         @media (max-width: $screen-xs) {
-          font-size: 22px;
+          font-size: 20px;
         }
       }
       .conversion {
         font-size: 10px;
         font-weight: 700;
         @media (max-width: $screen-xs) {
-          font-size: 9px;
+          font-size: 8px;
         }
       }
     }

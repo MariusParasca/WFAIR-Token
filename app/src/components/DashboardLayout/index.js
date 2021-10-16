@@ -13,6 +13,7 @@ import { ReactComponent as QweSvg } from "../../data/icons/company-logos/qwe.svg
 import { ReactComponent as WfraiSvg } from "../../data/icons/company-logos/wfair.svg";
 import Button from "../Button";
 import classNames from "classnames";
+import { PieChart } from "react-minimal-pie-chart";
 
 const DashboardCard = ({ children }) => {
   return <div className={styles.dashboardCardContainer}>{children}</div>;
@@ -96,6 +97,19 @@ const DashboardLayout = (props) => {
         <DashboardCard>
           <div className={styles.dashboardChartCard}>
             <div className={styles.chartWrapper}>
+              <PieChart
+                data={[
+                  {
+                    title: `Tokens already claimed`,
+                    value: "250000",
+                    color: "#4074F6",
+                  },
+                ]}
+                background={`#2a3252`}
+                totalValue={500000}
+                lineWidth={8}
+                startAngle={270}
+              />
               <div className={styles.insideChart}>
                 <p className={styles.text}>TOTAL TOKENS LOCKED</p>
                 <p className={styles.number}>250,000</p>
