@@ -1,0 +1,71 @@
+@import '../../styles/all';
+
+.headerTitle {
+  font-size: 30px;
+  font-family: $fontBold;
+  color: $colorWhite;
+  text-align: left;
+  margin-bottom: 11px;
+}
+
+.subTitle {
+  font-size: 16px;
+  color: $colorWhite;
+  text-align: left;
+  margin-bottom: 20px;
+}
+
+.dashboardCardContainer {
+  padding: 15px 20px;
+  background: #21203C;
+  border-radius: 16px;
+  max-width: 370px;
+  min-width: 175px;
+}
+
+.dashboardCoinPair {
+  .titleWrapper {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+    .title {
+      font-size: 30px;
+      font-family: $fontMedium;
+      margin-left: 10px;
+    }
+    .coinWrapper {
+      position: relative;
+      margin-bottom: 5px;;
+      margin-right: 6px;
+      .coinImg {
+        width: 25px;
+        height: 25px;
+      }
+      .wallfairLogo {
+        position: absolute;
+        bottom: -9px;
+        left: 5px;
+      }
+    }
+  }
+  .row {
+    display: flex;
+    justify-content: space-between;
+    font-size: 14px;
+    border-bottom: 0.5px solid rgba(255, 255, 255, 0.2);
+    padding-bottom: 4px;
+    margin-bottom: 4px;
+    &:last-child {
+      border-bottom: none;
+    }
+    .value {
+      font-family: $fontBold;
+    }
+  }
+
+  .buttonsWrapper {
+    display: flex;
+    margin-top: 25px;
+    justify-content: space-between;
+  }
+}

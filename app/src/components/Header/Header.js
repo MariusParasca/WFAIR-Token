@@ -10,9 +10,9 @@ const Header = ({ withNavbar = false }) => {
       {withNavbar ? (
         <>
           <Navbar />
-          <div className={styles.walletWelcome}>
+          {/* <div className={styles.walletWelcome}>
             <Web3Status />
-          </div>
+          </div> */}
         </>
       ) : (
         <header className={styles.header}>

@@ -32,6 +32,7 @@ const Navbar = () => {
         {renderNavbarLink('/', <img src={LogoDemo} width={200} alt={'Wallfair'} />, true)}
 
         <div className={style.linkWrapper}>
+        {renderNavbarLink("/dashboard", "Dashboard", false)}
           <a href='https://wallfair.io' target='_blank' rel='noreferrer' activeClassName={style.active}>
             Website
           </a>

@@ -1,5 +1,5 @@
 import React, { lazy } from 'react'
-import { Router, Route, Switch } from 'react-router-dom'
+import { BrowserRouter, Route, Switch } from 'react-router-dom'
 import DefaultLayout from './components/DefaultLayout/DefaultLayout'
 import ScrollToTop from './components/ScrollToTop'
 import SuspenseWithChunkError from './components/SuspenseWithChunkError'
@@ -9,22 +9,24 @@ import Web3ReactManager from './components/Web3ReactManager'
 
 const Home = lazy(() => import('./routes/Home'))
 const NotFound = lazy(() => import('./routes/NotFound'))
+const Dashboard = lazy(() => import('./routes/Dashboard'))
 
 const SafeApp = () => {
   return (
-    <Router history={history}>
+    <BrowserRouter history={history}>
       <SuspenseWithChunkError fallback={<Fallback />}>
         <Web3ReactManager>
           <ScrollToTop />
           <DefaultLayout>
             <Switch>
               <Route path="/" exact component={Home} />
+              <Route path="/dashboard"  component={Dashboard} />
               <Route component={NotFound} />
             </Switch>
           </DefaultLayout>
         </Web3ReactManager>
       </SuspenseWithChunkError>
-    </Router>
+    </BrowserRouter>
   )
 }
 
