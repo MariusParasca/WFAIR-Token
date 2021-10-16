@@ -12,6 +12,7 @@ import { ReactComponent as FrogSvg } from "../../data/icons/company-logos/frog.s
 import { ReactComponent as QweSvg } from "../../data/icons/company-logos/qwe.svg";
 import { ReactComponent as WfraiSvg } from "../../data/icons/company-logos/wfair.svg";
 import Button from "../Button";
+import classNames from "classnames";
 
 const DashboardCard = ({ children }) => {
   return <div className={styles.dashboardCardContainer}>{children}</div>;
@@ -73,34 +74,25 @@ const DashboardConvertCard = ({ coin, text }) => {
 };
 
 const DashboardLayout = (props) => {
+  const predictedGasCard = (
+    <DashboardStatusCard
+      icon={<GasSvg />}
+      iconContainerColor="#FDBD2E"
+      title="529"
+      subtitle={
+        <div>
+          Predicted gas
+          <br /> fee
+        </div>
+      }
+    />
+  );
+
   return (
     <div>
       <h1 className={styles.headerTitle}>Dashboard</h1>
       <p className={styles.subTitle}>Here you can see the current token price. And maybe some other text...</p>
-      <div>
-        <DashboardCard>
-          <div className={styles.dashboardCompaniesCard}>
-            <div className={styles.svgWrapper}>
-              <MCompanySvg />
-            </div>
-            <div className={styles.svgWrapper}>
-              <FrogSvg />
-            </div>
-            <div className={styles.svgWrapper}>
-              <QweSvg />
-            </div>
-            <div className={styles.svgWrapper}>
-              <WfraiSvg />
-            </div>
-          </div>
-        </DashboardCard>
-        <DashboardCard>
-          <div className={styles.dashboardWfairCard}>
-            <WfraiSvg className={styles.icon} />
-            <Button size="medium">Buy WFAIR</Button>
-          </div>
-        </DashboardCard>
-        <DashboardConvertCard coin={TetherImg} text="1 WFAIR ~ 0.07 USDT" />
+      <div className={styles.gridWrapper}>
         <DashboardCoinPairCard
           coinIcon={EthereumImg}
           title="WFAIR-ETH LP"
@@ -145,20 +137,68 @@ const DashboardLayout = (props) => {
             },
           ]}
         />
-        <DashboardStatusCard
-          icon={<TransactionSvg />}
-          iconContainerColor="#4DC671"
-          title="1200"
-          subtitle="Number of transactions"
-        />
-        <DashboardStatusCard icon={<UserSvg />} iconContainerColor="#496188" title="529" subtitle="Number of holders" />
-        <DashboardStatusCard icon={<GasSvg />} iconContainerColor="#FDBD2E" title="529" subtitle="Predicted gas fee" />
+        <div className={styles.rowsGrid}>
+          <DashboardConvertCard coin={TetherImg} text="1 WFAIR ~ 0.07 USDT" />
+          <DashboardCard>
+            <div className={styles.dashboardCompaniesCard}>
+              <div className={styles.svgWrapper}>
+                <MCompanySvg />
+              </div>
+              <div className={styles.svgWrapper}>
+                <FrogSvg />
+              </div>
+              <div className={styles.svgWrapper}>
+                <QweSvg />
+              </div>
+              <div className={styles.svgWrapper}>
+                <WfraiSvg />
+              </div>
+            </div>
+          </DashboardCard>
+        </div>
+
+        <div className={classNames(styles.columnsGrid, styles.statusesContainer)}>
+          <DashboardStatusCard
+            icon={<TransactionSvg />}
+            iconContainerColor="#4DC671"
+            title="1200"
+            subtitle={
+              <div>
+                Number of
+                <br /> transactions
+              </div>
+            }
+          />
+          <DashboardStatusCard
+            icon={<UserSvg />}
+            iconContainerColor="#496188"
+            title="529"
+            subtitle={
+              <div>
+                Number of
+                <br /> holders
+              </div>
+            }
+          />
+          <div className={styles.hideMdUp}>{predictedGasCard}</div>
+        </div>
+
+        <div className={classNames(styles.columnsGrid, styles.metamuskGrid)}>
+          <div className={styles.hideMdDown}>{predictedGasCard}</div>
+          <DashboardCard>
+            <div className={styles.dashboardMetamuskCard}>
+              <img src={MetamuskImg} alt="metmusk" />
+              <Button size="small" variant="outlined" fontSize="small">
+                Add WFAIR to Metamask
+              </Button>
+            </div>
+          </DashboardCard>
+        </div>
+
         <DashboardCard>
-          <div className={styles.dashboardMetamuskCard}>
-            <img src={MetamuskImg} alt="metmusk" />
-            <Button size="small" variant="outlined" fontSize="small">
-              Add WFAIR to Metamask
-            </Button>
+          <div className={styles.dashboardWfairCard}>
+            <WfraiSvg className={styles.icon} />
+            <Button size="medium">Buy WFAIR</Button>
           </div>
         </DashboardCard>
       </div>
