@@ -161,25 +161,6 @@ const DashboardLayout = (props) => {
             },
           ]}
         />
-        <div className={styles.rowsGrid}>
-          <DashboardConvertCard coin={TetherImg} text="1 WFAIR ~ 0.07 USDT" />
-          <DashboardCard>
-            <div className={styles.dashboardCompaniesCard}>
-              <div className={styles.svgWrapper}>
-                <MCompanySvg />
-              </div>
-              <div className={styles.svgWrapper}>
-                <FrogSvg />
-              </div>
-              <div className={classNames(styles.svgWrapper, styles.qweSvg)}>
-                <QweSvg />
-              </div>
-              <div className={styles.svgWrapper}>
-                <WfraiSvg />
-              </div>
-            </div>
-          </DashboardCard>
-        </div>
 
         <div className={classNames(styles.columnsGrid, styles.statusesContainer)}>
           <DashboardStatusCard
@@ -207,6 +188,26 @@ const DashboardLayout = (props) => {
           <div className={styles.hideMdUp}>{predictedGasCard}</div>
         </div>
 
+        <div className={styles.rowsGrid}>
+          <DashboardConvertCard coin={TetherImg} text="1 WFAIR ~ 0.07 USDT" />
+          <DashboardCard>
+            <div className={styles.dashboardCompaniesCard}>
+              <div className={styles.svgWrapper}>
+                <MCompanySvg />
+              </div>
+              <div className={styles.svgWrapper}>
+                <FrogSvg />
+              </div>
+              <div className={classNames(styles.svgWrapper, styles.qweSvg)}>
+                <QweSvg />
+              </div>
+              <div className={styles.svgWrapper}>
+                <WfraiSvg />
+              </div>
+            </div>
+          </DashboardCard>
+        </div>
+
         <div className={classNames(styles.columnsGrid, styles.metamuskGrid)}>
           <div className={styles.hideMdDown}>{predictedGasCard}</div>
           <DashboardCard>
@@ -219,14 +220,16 @@ const DashboardLayout = (props) => {
           </DashboardCard>
         </div>
 
-        <DashboardCard>
-          <div className={styles.dashboardWfairCard}>
-            <div className={styles.iconWrapper}>
-              <WfraiSvg className={styles.icon} />
+        <div className={styles.columnsGrid}>
+          <DashboardCard>
+            <div className={styles.dashboardWfairCard}>
+              <div className={styles.iconWrapper}>
+                <WfraiSvg className={styles.icon} />
+              </div>
+              <Button size="medium">Buy WFAIR</Button>
             </div>
-            <Button size="medium">Buy WFAIR</Button>
-          </div>
-        </DashboardCard>
+          </DashboardCard>
+        </div>
       </div>
     </div>
   );
