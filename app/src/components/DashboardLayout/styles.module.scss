@@ -69,3 +69,67 @@
     justify-content: space-between;
   }
 }
+
+.dashboardStatusCard {
+  text-align: left;
+  .iconContainer {
+    width: 51px;
+    height: 51px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 15px;
+  }
+  .title {
+    font-size: 30px;
+    font-weight: 700;
+    margin-bottom: 6px;
+  }
+  .subtitle {
+    font-size: 14px;
+    font-weight: 500;
+  }
+}
+
+.centerContent {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.dashboardMetamuskCard {
+  @extend .centerContent;
+  & > img {
+    margin-bottom: 20px;
+  }
+}
+
+.dashboardWfairCard {
+  @extend .centerContent;
+  .icon {
+    margin-bottom: 20px;
+  }
+}
+
+.dashboardConvertCard {
+  display: flex;
+  align-items: center;
+  .text {
+    margin-left: 15px;
+    font-size: 30px;
+    font-weight: 500;
+  }
+}
+
+.dashboardCompaniesCard {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  .svgWrapper {
+    width: 54px;
+    height: 54px;
+    margin: 0 2px;
+  }
+}
