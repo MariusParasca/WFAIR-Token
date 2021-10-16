@@ -302,7 +302,11 @@ $gapMD: 16px;
     height: 54px;
     margin: 0 2px;
 
-    @media (max-width: $screen-sm) {
+    .qweSvg {
+      margin-bottom: -10px;
+    }
+
+    @media (max-width: $screen-xs) {
       width: 35px;
       height: 35px;
     }
