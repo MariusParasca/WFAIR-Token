@@ -31,17 +31,17 @@ const DashboardCoinPairCard = ({ coinIcon, title, rows }) => {
         </div>
         <div>
           {rows.map((row) => (
-            <div className={styles.row}>
-              <div>{row.label}</div>
-              <div className={styles.value}>{row.value}</div>
+            <div className={styles.row} key={row.label}>
+              <p>{row.label}</p>
+              <p className={styles.value}>{row.value}</p>
             </div>
           ))}
         </div>
         <div className={styles.buttonsWrapper}>
-          <Button size="small" variant="outlined">
+          <Button size="small" variant="outlined" className={styles.leftButton}>
             Add Pair to Metamusk
           </Button>
-          <Button>Connect Wallet</Button>
+          <Button className={styles.rightButton}>Connect Wallet</Button>
         </div>
       </div>
     </DashboardCard>
@@ -55,7 +55,7 @@ const DashboardStatusCard = ({ icon, iconContainerColor, title, subtitle }) => {
         <div className={styles.iconContainer} style={{ backgroundColor: iconContainerColor }}>
           {icon}
         </div>
-        <div className={styles.title}>{title}</div>
+        <p className={styles.title}>{title}</p>
         <div className={styles.subtitle}>{subtitle}</div>
       </div>
     </DashboardCard>
@@ -67,7 +67,7 @@ const DashboardConvertCard = ({ coin, text }) => {
     <DashboardCard>
       <div className={styles.dashboardConvertCard}>
         <img src={coin} alt="coin" />
-        <div className={styles.text}>{text}</div>
+        <p className={styles.text}>{text}</p>
       </div>
     </DashboardCard>
   );
@@ -76,14 +76,14 @@ const DashboardConvertCard = ({ coin, text }) => {
 const DashboardLayout = (props) => {
   const predictedGasCard = (
     <DashboardStatusCard
-      icon={<GasSvg />}
+      icon={<GasSvg className={styles.gasSvg} />}
       iconContainerColor="#FDBD2E"
       title="529"
       subtitle={
-        <div>
+        <p>
           Predicted gas
           <br /> fee
-        </div>
+        </p>
       }
     />
   );
@@ -93,7 +93,30 @@ const DashboardLayout = (props) => {
       <h1 className={styles.headerTitle}>Dashboard</h1>
       <p className={styles.subTitle}>Here you can see the current token price. And maybe some other text...</p>
       <div className={styles.gridWrapper}>
+        <DashboardCard>
+          <div className={styles.dashboardChartCard}>
+            <div className={styles.chartWrapper}>
+              <div className={styles.insideChart}>
+                <p className={styles.text}>TOTAL TOKENS LOCKED</p>
+                <p className={styles.number}>250,000</p>
+                <p className={styles.conversion}>~ 25,978 USDT</p>
+              </div>
+            </div>
+            <div className={styles.rightSide}>
+              <p className={styles.text}>
+                TOKENS ALREADY CLAIMED: <br />
+                <span className={styles.bold}>150,000 WFAIR ~ 1,114 USDT</span>
+              </p>
+              <p className={styles.text}>
+                TOKENS TO BE CLAIMED: <br />
+                <span className={styles.bold}>1,000 WFAIR ~ 114 USDT</span>
+              </p>
+              <Button size="medium">Claim WFAIR</Button>
+            </div>
+          </div>
+        </DashboardCard>
         <DashboardCoinPairCard
+          key={"eth"}
           coinIcon={EthereumImg}
           title="WFAIR-ETH LP"
           rows={[
@@ -116,6 +139,7 @@ const DashboardLayout = (props) => {
           ]}
         />
         <DashboardCoinPairCard
+          key="USDT"
           coinIcon={TetherImg}
           title="WFAIR-USDT LP"
           rows={[
@@ -147,7 +171,7 @@ const DashboardLayout = (props) => {
               <div className={styles.svgWrapper}>
                 <FrogSvg />
               </div>
-              <div className={styles.svgWrapper}>
+              <div className={classNames(styles.svgWrapper, styles.qweSvg)}>
                 <QweSvg />
               </div>
               <div className={styles.svgWrapper}>
@@ -159,25 +183,25 @@ const DashboardLayout = (props) => {
 
         <div className={classNames(styles.columnsGrid, styles.statusesContainer)}>
           <DashboardStatusCard
-            icon={<TransactionSvg />}
+            icon={<TransactionSvg className={styles.transactionSvg} />}
             iconContainerColor="#4DC671"
             title="1200"
             subtitle={
-              <div>
+              <p>
                 Number of
                 <br /> transactions
-              </div>
+              </p>
             }
           />
           <DashboardStatusCard
-            icon={<UserSvg />}
+            icon={<UserSvg className={styles.userSvg} />}
             iconContainerColor="#496188"
             title="529"
             subtitle={
-              <div>
+              <p>
                 Number of
                 <br /> holders
-              </div>
+              </p>
             }
           />
           <div className={styles.hideMdUp}>{predictedGasCard}</div>
@@ -197,7 +221,9 @@ const DashboardLayout = (props) => {
 
         <DashboardCard>
           <div className={styles.dashboardWfairCard}>
-            <WfraiSvg className={styles.icon} />
+            <div className={styles.iconWrapper}>
+              <WfraiSvg className={styles.icon} />
+            </div>
             <Button size="medium">Buy WFAIR</Button>
           </div>
         </DashboardCard>
