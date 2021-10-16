@@ -220,7 +220,7 @@ const DashboardLayout = (props) => {
           </DashboardCard>
         </div>
 
-        <div className={styles.columnsGrid}>
+        <div className={classNames(styles.columnsGrid, styles.buyWFAIR)}>
           <DashboardCard>
             <div className={styles.dashboardWfairCard}>
               <div className={styles.iconWrapper}>
